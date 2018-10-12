@@ -56,6 +56,7 @@ module.exports = {
 	},
 	devServer: {
 		hot:true,
-		watchContentBase: true,
+        watchContentBase: true,
+        historyApiFallback: true,
     },
 };
