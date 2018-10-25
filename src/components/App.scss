@@ -1,4 +1,48 @@
 
-#root button{
-    background-color: peachpuff !important;
+/*reset css*/
+body{
+    margin: 0;
+    padding: 0;
+}
+.align-right{
+    text-align: right;
+}
+.align-left{
+    text-align: left;
+}
+.full-width{
+    width: 100% !important;
+}
+.mg-15{
+    margin:15px;
+}
+.mg-left-15{
+    margin-left: 15px;
+}
+.mg-righ-15{
+    margin-right: 15px;
+}
+.mg-bottom-15{
+    margin-bottom: 15px;
+}
+.mg-top-15{
+    margin-top: 15px;
+}
+.mg-5{
+    margin: 5px;
+}
+.mg-left-5{
+    margin-left: 5px;
+}
+.mg-right-5{
+    margin-right: 5px;
+}
+.mg-bottom-5{
+    margin-bottom: 5px;
+}
+.mg-top-5{
+    margin-top: 5px;
+}
+.highlight {
+    background-color: #e8e8e8;
 }

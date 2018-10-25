@@ -24,7 +24,7 @@ export class App extends React.Component<{}, {}> {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                        <li><Link to="/hello">Hello</Link></li>                            
+                        {/* <li><Link to="/hello">Hello</Link></li>                             */}
                         <Routes />
                         </div>
                     </div>
