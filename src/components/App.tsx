@@ -2,7 +2,8 @@
 /**Import Library */
 import * as React from "react";
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-
+import { connect } from 'react-redux'
+import { login } from './producers/todos';
 /** Import dependency */
 import Header from './layout/header';
 import ButtonExampleEmphasisShorthand from './layout/button';
@@ -32,3 +33,9 @@ export class App extends React.Component<{}, {}> {
         );
     }
 }
+const mapDispatchToProps = { login };
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(App);
