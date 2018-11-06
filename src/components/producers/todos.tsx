@@ -12,7 +12,8 @@ const initialState = {
 export type TodosState = Readonly<typeof initialState>;
 export const ACTION_TYPES = {
   LOGIN: 'LOGIN',
-  TODO: 'ADD_TODO'
+  TODO: 'ADD_TODO',
+  SUCCESS_LOADING: 'SUCCESS_LOADING'
 };
 
 const todos = (state : TodosState = initialState , action) => {
@@ -25,6 +26,10 @@ const todos = (state : TodosState = initialState , action) => {
         return {
           ...initialState,loading: true
         }  
+      case 'SUCCESS_LOADING': 
+        return {
+          ...initialState,loading: false
+        }  
       default:
         return state
     }
@@ -36,9 +41,7 @@ const todos = (state : TodosState = initialState , action) => {
     dispatch({
       type: ACTION_TYPES.LOGIN,
       payload: axios.post('https://jsonplaceholder.typicode.com/posts', { username, password, rememberMe }).then(function (response) {
-        return {
-          ...initialState,loading: false
-        }       
+          dispatch({type: ACTION_TYPES.SUCCESS_LOADING});  
         }).catch(function (error) {
         return {
           ...initialState,loading: false

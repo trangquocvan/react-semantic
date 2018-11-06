@@ -24,6 +24,21 @@ $backgroundColor: #17a2b8;
 // }
 
 .ui.toggle.checkbox input:focus:checked~.box:before,
-.ui.toggle.checkbox input:focus:checked~label:before {
+.ui.toggle.checkbox input:focus:checked~label:before
+{
     background-color: #17a2b8 !important
 }
+.ui.toggle.checkbox input:hover:checked~.box:before,
+.ui.toggle.checkbox input:hover:checked~label:before
+{
+    background-color: #17a2b8 !important
+}
+.ui.toggle.checkbox input:not(:hover):checked~.box:before,
+.ui.toggle.checkbox input:not(:hover):checked~label:before
+{
+    background-color: #17a2b8 !important
+}
+// .ui.toggle.checkbox input:not(:focus:checked)~.box:before,
+// .ui.toggle.checkbox input:not(:focus:checked)~label:before{
+//     background-color: #17a2b8 !important
+// }

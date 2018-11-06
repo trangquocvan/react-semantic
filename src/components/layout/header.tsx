@@ -1,4 +1,5 @@
 import * as React from "react";
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
 // const Header = () => (
  
@@ -78,7 +79,7 @@ import * as React from "react";
                 Home
             </a>
             <a className="item">
-                Messages
+                {/* <Link to="/login" replace >Messages</Link> */}
             </a>
           
             <div className="right menu">
