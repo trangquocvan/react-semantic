@@ -11,7 +11,7 @@ const initialState = {
 };
 export type TodosState = Readonly<typeof initialState>;
 export const ACTION_TYPES = {
-  LOGIN: 'authentication/LOGIN',
+  LOGIN: 'LOGIN',
   TODO: 'ADD_TODO'
 };
 
@@ -19,8 +19,12 @@ const todos = (state : TodosState = initialState , action) => {
     switch (action.type) {
       case 'ADD_TODO':
         return{
-          ...state
+          ...state,loading: true
         }
+      case 'LOGIN': 
+        return {
+          ...initialState,loading: true
+        }  
       default:
         return state
     }
@@ -28,8 +32,21 @@ const todos = (state : TodosState = initialState , action) => {
 
   export default todos;
 
-  export const login = (username, password, rememberMe = false)  => dispatch =>
-  dispatch({
-    type: ACTION_TYPES.LOGIN,
-    payload: axios.post('https://jsonplaceholder.typicode.com/posts', { username, password, rememberMe })
-  });
+  export const login = (username, password, rememberMe = false)  => (dispatch,getState) =>{
+    dispatch({
+      type: ACTION_TYPES.LOGIN,
+      payload: axios.post('https://jsonplaceholder.typicode.com/posts', { username, password, rememberMe }).then(function (response) {
+        return {
+          ...initialState,loading: false
+        }       
+        }).catch(function (error) {
+        return {
+          ...initialState,loading: false
+        }
+        })
+    });
+    console.log('next state', getState())
+  }
+  export const getStateLogin = () => (dispatch,getState) =>{
+    console.log('next state', getState())
+  }

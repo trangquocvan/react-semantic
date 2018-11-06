@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import * as React from 'react';
-import { login } from '../producers/todos';
+import { login,getStateLogin } from '../producers/todos';
 import { connect } from 'react-redux';
 import { Radio } from 'semantic-ui-react'
 import './login.scss';
@@ -17,10 +17,12 @@ export class Login extends React.Component<DispatchProps,{}>{
         super(props);
     }
     handleChangeModel = (event) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
     }
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.props.login("van","van",false));
+        this.props.getStateLogin();
     }
     render(){
         return (
@@ -41,7 +43,11 @@ export class Login extends React.Component<DispatchProps,{}>{
                                     {/* <label>Password</label> */}
                                     <input type="password" name="password" placeholder="Password" autoComplete="false" onChange={this.handleChangeModel}/>
                                 </div>
-                                <Radio toggle className="full-width" name="number"  />
+                                {/* <Radio toggle className="full-width" name="number" style={divStyle}/> */}
+                                <div className="ui fitted toggle checkbox full-width">
+                                    <input type="checkbox" name="public" value="on" />
+                                    <label></label>
+                                </div>
                                 <button className="btn btn-info my-4 btn-block waves-effect waves-light">Submit</button>
                                 </div>
                             </div>
@@ -54,7 +60,7 @@ export class Login extends React.Component<DispatchProps,{}>{
         );
     }
 }
-const mapDispatchToProps = { login };
+const mapDispatchToProps = { login,getStateLogin };
 const mapStateToProps = null;
 type DispatchProps = typeof mapDispatchToProps;
 

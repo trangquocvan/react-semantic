@@ -1,3 +1,6 @@
+/**Import css */
+import 'semantic-ui-css/semantic.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 /**Import library */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -11,11 +14,10 @@ import { App } from "./components/App";
 import rootReducer from './components/producers/reducers';
 import 'core-js/es6/map';
 import 'core-js/es6/set';
-/**Import css */
-import 'semantic-ui-css/semantic.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+console.log(store.getState());
 // const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 
