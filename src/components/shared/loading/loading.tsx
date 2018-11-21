@@ -4,7 +4,7 @@ import { ScaleLoader } from 'react-spinners';
 type MyState = {
     loading: boolean
 }
-export class Loading extends React.Component<{},MyState>{
+export class Loading extends React.Component<{loading:boolean},MyState>{
     constructor(props){
         super(props);
         this.state ={

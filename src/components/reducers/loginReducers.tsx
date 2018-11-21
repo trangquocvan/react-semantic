@@ -1,4 +1,5 @@
 import axios from 'axios';
+import loading, {ACTION_TYPES_LOADING} from './loadingReducers';
 const initialState = {
   loading: false,
   isAuthenticated: false,
@@ -16,7 +17,7 @@ export const ACTION_TYPES = {
   SUCCESS_LOADING: 'SUCCESS_LOADING'
 };
 
-const todos = (state : TodosState = initialState , action) => {
+const loginReducers = (state : TodosState = initialState , action) => {
     switch (action.type) {
       case 'ADD_TODO':
         return{
@@ -35,17 +36,16 @@ const todos = (state : TodosState = initialState , action) => {
     }
   }
 
-  export default todos;
+  export default loginReducers;
 
   export const login = (username, password, rememberMe = false)  => (dispatch,getState) =>{
+    dispatch({type: ACTION_TYPES_LOADING.START_LOADING});
     dispatch({
       type: ACTION_TYPES.LOGIN,
       payload: axios.post('https://jsonplaceholder.typicode.com/posts', { username, password, rememberMe }).then(function (response) {
-          dispatch({type: ACTION_TYPES.SUCCESS_LOADING});  
+          dispatch({type: ACTION_TYPES_LOADING.STOP_LOADING});
         }).catch(function (error) {
-        return {
-          ...initialState,loading: false
-        }
+          dispatch({type: ACTION_TYPES_LOADING.STOP_LOADING});
         })
     });
     console.log('next state', getState())

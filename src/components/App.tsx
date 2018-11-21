@@ -3,7 +3,7 @@
 import * as React from "react";
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { login } from './producers/todos';
+import { getStateLoading } from './reducers/loadingReducers';
 /** Import dependency */
 import Loading from './shared/loading/loading';
 import Header from './layout/header';
@@ -17,7 +17,19 @@ import './shared/loading/loading.scss';
 
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export class App extends React.Component<{}, {}> {
+
+export class App extends React.Component<DispatchProps, StateProps> {
+    constructor(props){
+        super(props);
+        this.state = {
+            loading: this.props.getStateLoading
+        }
+    }
+    componentDidUpdate(){
+        this.setState({
+            loading: this.props.getStateLoading
+        })
+    }
     render() {
         return (
             <div className="full-width full-height">
@@ -31,6 +43,7 @@ export class App extends React.Component<{}, {}> {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
+                            { this.state.loading ? 'TRUE' : 'FALSE'} 
                             <Routes />
                             </div>
                         </div>
@@ -40,9 +53,14 @@ export class App extends React.Component<{}, {}> {
         );
     }
 }
-const mapDispatchToProps = { login };
+const mapDispatchToProps = { getStateLoading };
+const mapStateToProps = null;
+
+type StateProps = typeof mapStateToProps;
+
+type DispatchProps = typeof mapDispatchToProps;
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(App);

@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import * as React from 'react';
-import { login,getStateLogin } from '../producers/todos';
+import { login,getStateLogin, } from '../reducers/loginReducers';
 import { connect } from 'react-redux';
 import { Radio } from 'semantic-ui-react'
 import './login.scss';
@@ -8,7 +8,10 @@ const divStyle = {
 }
 console.log($('.ui.radio.checkbox'))
 
-export class Login extends React.Component<DispatchProps,{}>{
+export class Login extends React.Component<DispatchProps,StateProps>{
+    componentDidMount(){
+
+    }
     componentDidUpdate(){
         $('.ui.radio.checkbox').checkbox();
         console.log($('.ui.radio.checkbox').checkbox())
@@ -63,5 +66,6 @@ export class Login extends React.Component<DispatchProps,{}>{
 const mapDispatchToProps = { login,getStateLogin };
 const mapStateToProps = null;
 type DispatchProps = typeof mapDispatchToProps;
+type StateProps = typeof mapStateToProps;
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login)
